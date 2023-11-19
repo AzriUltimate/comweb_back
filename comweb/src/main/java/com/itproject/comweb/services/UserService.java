@@ -19,9 +19,11 @@ public class UserService {
         String email = user.getEmail();
         if (userRepository.findByEmail(user.getEmail()) != null) return false;
         user.setActive(true);
+        user.init();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.getRoles().add(Role.ROLE_USER);
         log.info("Saving new User with email: {}", email);
+        userRepository.save(user);
         return true;
     }
 }

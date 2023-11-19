@@ -34,7 +34,7 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
-    private void init(){
+    public void init(){
         timeOfCreation = LocalDateTime.now();
     }
 
